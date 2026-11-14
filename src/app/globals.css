@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens: "race day at sunrise".
+ * ink   = the pre-dawn sky and deep water
+ * sun   = the sunrise itself (gold to orange)
+ * flare = hot accent near the horizon
+ * dusk  = the magenta and violet band above the horizon
+ * foam  = text and whitewater
+ */
+@theme {
+  --color-ink-950: #050816;
+  --color-ink-900: #0a1128;
+  --color-ink-800: #111a3a;
+  --color-ink-700: #1b2852;
+  --color-ink-600: #2a3a6e;
+
+  --color-foam: #f6f0e4;
+  --color-mist: #aab4d2;
+
+  --color-sun-200: #ffe9b8;
+  --color-sun-300: #ffd27a;
+  --color-sun-400: #ffb24d;
+  --color-sun-500: #ff8a3c;
+  --color-flare-500: #ff5a3c;
+  --color-dusk-500: #e0457b;
+  --color-dusk-700: #7a2e8f;
+  --color-dusk-900: #2a1a5e;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    background: var(--color-ink-950);
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--color-ink-950);
+    color: var(--color-foam);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-sun-400);
+    color: var(--color-ink-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sun-300);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Condensed, all caps display type used for headings and numbers. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+  }
+
+  /* Small mono label, used for eyebrows and timing readouts. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .text-sunrise {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-sun-200) 0%,
+      var(--color-sun-400) 38%,
+      var(--color-flare-500) 68%,
+      var(--color-dusk-500) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Checkered flag strip. */
+  .checker {
+    background-image: repeating-conic-gradient(
+      var(--color-foam) 0% 25%,
+      var(--color-ink-950) 0% 50%
+    );
+    background-size: 14px 14px;
+  }
+
+  /* Card surface used across sections. */
+  .panel {
+    border: 1px solid rgb(255 255 255 / 0.08);
+    background: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.05),
+      rgb(255 255 255 / 0.015)
+    );
+  }
+
+  .prose-club p + p {
+    margin-top: 1em;
+  }
+
+  .field {
+    width: 100%;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    background: rgb(5 8 22 / 0.6);
+    padding: 0.8rem 0.95rem;
+    color: var(--color-foam);
+    transition: border-color 150ms;
+  }
+
+  .field::placeholder {
+    color: rgb(170 180 210 / 0.6);
+  }
+
+  .field:hover {
+    border-color: rgb(255 255 255 / 0.3);
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: var(--color-flare-500);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes sun-breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -56%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -58%) scale(1.03);
+  }
+}
