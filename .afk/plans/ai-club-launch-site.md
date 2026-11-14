@@ -125,7 +125,17 @@ Milestones 1 to 3 are built and committed. Milestone 4 (GitHub repo, Vercel depl
 3. **The email list variable is `RESEND_SEGMENT_ID`.** The installed Resend SDK marks audiences as deprecated in favor of segments.
 4. **Forms show a closed notice up front when not configured**, instead of only after a submit.
 5. **Events with a start but no end run for three hours** before they count as past.
-6. **`/events/[slug]` exports `instant = false`.** All real events are prerendered, so the route needs no instant shell. An unknown slug renders the not-found page: visitors get it with a 200 status and a `noindex` tag, and Googlebot gets a real 404 (measured against a production build). A 404 status for every client would need `proxy.ts`, which was judged not worth it for this site. `dynamicParams = false` is not available with Cache Components.
+6. **`/events/[slug]` exports `instant = false`.** All real events are prerendered, so the route needs no instant shell. An unknown slug renders the not-found page with a `noindex` tag. On Vercel the response is a real 404 (measured on the live deployment). Under a local `next start` browsers get a 200 and Googlebot gets a 404. `dynamicParams = false` is not available with Cache Components.
+
+### Deployment
+
+Deployed to Vercel on 2026-11-14 with `vercel deploy --prod --scope graisol`.
+
+- URL: https://daytona-ai-club.vercel.app
+- Project: `daytona-ai-club` in the `graisol` team, created by this deploy.
+- Source: uploaded from the local directory at commit `6acc50a`. There is no GitHub repo, so pushes do not deploy. Redeploy with the same command.
+- No environment variables are set, so both forms show the closed notice.
+- Still not done from milestone 4: the GitHub repo and the domain purchase.
 
 ### Not verified
 
