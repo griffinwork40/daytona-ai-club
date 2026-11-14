@@ -24,16 +24,16 @@ export function SiteFooter() {
 
         <nav aria-label="Footer">
           <p className="label text-sun-300">Site</p>
-          <ul className="mt-4 space-y-2">
+          <ul className="mt-3">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-mist hover:text-foam">
+                <Link href={item.href} className="inline-block py-1.5 text-mist hover:text-foam">
                   {item.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/#join" className="text-mist hover:text-foam">
+              <Link href="/#join" className="inline-block py-1.5 text-mist hover:text-foam">
                 Join the club
               </Link>
             </li>
@@ -43,12 +43,12 @@ export function SiteFooter() {
         <div>
           <p className="label text-sun-300">Elsewhere</p>
           {external.length > 0 || site.contactEmail ? (
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-3">
               {external.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
-                    className="text-mist hover:text-foam"
+                    className="inline-block py-1.5 text-mist hover:text-foam"
                     rel="noreferrer"
                   >
                     {l.label}
@@ -59,7 +59,7 @@ export function SiteFooter() {
                 <li>
                   <a
                     href={`mailto:${site.contactEmail}`}
-                    className="text-mist hover:text-foam"
+                    className="inline-block py-1.5 text-mist hover:text-foam"
                   >
                     {site.contactEmail}
                   </a>

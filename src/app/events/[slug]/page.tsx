@@ -11,9 +11,14 @@ import { eventStructuredData, serializeJsonLd } from "@/lib/events/structured-da
 import { getNow } from "@/lib/now";
 
 /**
- * Every real event is prerendered through generateStaticParams. A slug
- * that is not an event should block and return a true 404, not stream a
- * 200 shell first, so this segment opts out of instant navigation checks.
+ * Every real event is prerendered through generateStaticParams, so this
+ * segment does not need an instant shell and opts out of that check.
+ *
+ * A slug that is not an event renders the not-found page. With Cache
+ * Components the response has already started by then, so visitors get
+ * that page with a 200 status and a `noindex` tag, while crawlers that
+ * need full HTML (Googlebot) get a real 404. Measured against a
+ * production build. A 404 status for everyone would need `proxy.ts`.
  * (`dynamicParams = false` is not available with Cache Components.)
  */
 export const instant = false;

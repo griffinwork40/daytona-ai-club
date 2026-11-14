@@ -113,3 +113,24 @@ Typecheck, ESLint, production build, unit tests, and mobile and desktop screensh
 2. Date and venue for meetup #001.
 3. A short bio.
 4. A Resend API key and audience id.
+
+## Status (2026-11-14)
+
+Milestones 1 to 3 are built and committed. Milestone 4 (GitHub repo, Vercel deploy, domain purchase) has not been started and waits for owner approval.
+
+### Deviations from the plan
+
+1. **Milestone 1 screenshot review did not pause the build.** The owner asked for the whole plan to be implemented in one pass, so the hero was reviewed by the build agent and work continued.
+2. **Join form has two fields, not three.** An optional "what describes you" choice was built and then removed, because the value was collected and never stored.
+3. **The email list variable is `RESEND_SEGMENT_ID`.** The installed Resend SDK marks audiences as deprecated in favor of segments.
+4. **Forms show a closed notice up front when not configured**, instead of only after a submit.
+5. **Events with a start but no end run for three hours** before they count as past.
+6. **`/events/[slug]` exports `instant = false`.** All real events are prerendered, so the route needs no instant shell. An unknown slug renders the not-found page: visitors get it with a 200 status and a `noindex` tag, and Googlebot gets a real 404 (measured against a production build). A 404 status for every client would need `proxy.ts`, which was judged not worth it for this site. `dynamicParams = false` is not available with Cache Components.
+
+### Not verified
+
+1. A real signup or proposal through Resend. No API key exists in this environment, so the success path and Resend's behavior for a duplicate email are untested.
+2. The forms with JavaScript disabled.
+3. Browsers other than Chrome.
+4. Performance scores. Lighthouse was run for accessibility, SEO, and best practices only.
+5. The research items listed as not confirmed at the top of this plan.
