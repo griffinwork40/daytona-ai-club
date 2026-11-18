@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/site-header";
-import { CheckerStrip, Container } from "@/components/ui/primitives";
+import { Container } from "@/components/ui/primitives";
 import { nav, site } from "@/config/site";
 
 export function SiteFooter() {
@@ -12,13 +12,11 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto bg-ink-950">
-      <CheckerStrip />
       <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Wordmark />
           <p className="mt-4 max-w-sm text-mist">
-            {site.tagline}. Monthly meetups for builders and the curious in{" "}
-            {site.county}.
+            {site.tagline}.
           </p>
         </div>
 
@@ -34,7 +32,7 @@ export function SiteFooter() {
             ))}
             <li>
               <Link href="/#join" className="inline-block py-1.5 text-mist hover:text-foam">
-                Join the club
+                Come hang out
               </Link>
             </li>
           </ul>

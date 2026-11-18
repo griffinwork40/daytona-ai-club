@@ -36,7 +36,7 @@ export function SiteHeader() {
             href="/#join"
             className="display bg-foam px-4 py-2 text-base tracking-wide text-ink-950 transition hover:bg-sun-300"
           >
-            Join the club
+            Come hang out
           </Link>
         </nav>
 

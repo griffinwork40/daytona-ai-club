@@ -1,81 +1,56 @@
 import { site } from "@/config/site";
 import type { Card, SectionCopy } from "@/content/types";
 
-/**
- * /about copy. Lines marked DRAFT are assumptions about club policy.
- * Confirm or edit them.
- */
-
 export const aboutMeta = {
   title: "About",
-  description: `Why ${site.name} exists, who runs it, who it is for, and the code of conduct for meetups in ${site.city}, ${site.region}.`,
+  description: `Why ${site.name} exists, who\u2019s behind it, and what to expect at a gathering in ${site.city}, ${site.region}.`,
 };
 
 export const aboutHeader = {
-  eyebrow: `Est. ${site.founded} · ${site.county}`,
-  title: "Why this club exists",
-  lede: `${site.name} is a monthly, in-person meetup for people around ${site.city} who want to see AI work up close and learn from each other.`,
+  eyebrow: `${site.city}, ${site.region}`,
+  title: "Why this exists",
+  lede: "Because I wanted to find people nearby who like building things with AI, and they didn\u2019t seem to be in one place yet.",
 };
 
 export const whyCopy = {
-  eyebrow: "The reason",
-  title: "A room that did not exist",
+  eyebrow: "The story",
+  title: "Finding your people",
   paragraphs: [
-    `${site.organizer.name} went looking for a recurring, in-person AI meetup in the ${site.city} area that was open to everyone, not only engineers. He could not find one.`,
-    "So he is starting it. The idea is simple: once a month, people who build with AI, use it at work, or are just curious get together in one room, watch real demos, and help each other get unstuck.",
-    "The club has not met yet. The first meetup is #001, Founding Night, and the people who join now help decide what it becomes.",
+    `I\u2019m ${site.organizer.name}. I\u2019m a software engineer in ${site.city} and I spend most of my time building open source AI agent tools.`,
+    "I went looking for a group of people around here who mess around with AI, build things, and hang out regularly. I couldn\u2019t find one.",
+    "So I\u2019m starting it. The idea is simple: get a few curious, interesting people together in one room on a regular basis. Laptops open, low pressure, see what happens.",
+    "The group hasn\u2019t met yet. The people who join now get to shape what it becomes.",
   ],
 };
 
-export const organizerCopy = {
-  eyebrow: "Race control",
-  title: "Who runs it",
+export const expectCopy: SectionCopy = {
+  eyebrow: "What to expect",
+  title: "The vibe",
+  lede: "A few things worth knowing before you show up.",
 };
 
-export const audienceCopy: SectionCopy = {
-  eyebrow: "The field",
-  title: "Who it is for",
-};
-
-export const conductCopy: SectionCopy = {
-  eyebrow: "Code of conduct",
-  title: "How we treat each other",
-  // DRAFT: the whole code of conduct below is a starting draft.
-  lede: "Everyone who attends, speaks, or helps run a meetup agrees to this.",
-};
-
-export const conduct: Card[] = [
+export const expectations: Card[] = [
   {
-    title: "Be welcoming",
-    body: "Treat every person and every question with respect, whatever their background or experience.",
+    title: "It\u2019s casual",
+    body: "Think apartment hangout, not conference room. Laptops, music, conversation.",
   },
   {
-    title: "No harassment",
-    body: "No harassment, intimidation, or unwelcome attention of any kind, in person or online.",
+    title: "Show things, don\u2019t pitch things",
+    body: "Share what you built, what you\u2019re stuck on, what you learned. No sales pitches.",
   },
   {
-    title: "Respect consent",
-    body: "Ask before photographing or recording people or their screens, and before sharing someone else's work.",
+    title: "Everyone\u2019s welcome",
+    body: "Experienced engineers and total beginners sit in the same room. Every question is fair game.",
   },
   {
-    title: "Keep it honest",
-    body: "Present your own work truthfully. No sales pitches from the stage.",
-  },
-  {
-    // DRAFT: enforcement policy.
-    title: "Consequences",
-    body: "The organizer may ask anyone who breaks these rules to leave and not return.",
+    title: "Be good to each other",
+    body: "Treat people with respect. If something makes you uncomfortable, tell Griffin and he\u2019ll handle it.",
   },
 ];
 
-export const conductReport = {
-  // DRAFT: reporting channel. Shown with the organizer's name since no contact email is set.
-  text: `If something happens that makes you uncomfortable, tell ${site.organizer.name} at the meetup.`,
-};
-
 export const aboutCta = {
-  title: "Be there for #001",
-  body: "Founding Night does not have a date yet. Join the list to hear first.",
-  join: { href: "/#join", label: "Join the club" },
-  speak: { href: "/speak", label: "Propose a demo" },
+  title: "Sound good?",
+  body: "Drop your email and I\u2019ll reach out when we\u2019re getting together.",
+  join: { href: "/#join", label: "I\u2019m interested" },
+  speak: { href: "/speak", label: "Share something" },
 };

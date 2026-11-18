@@ -68,7 +68,7 @@ export default function Image() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 84, lineHeight: 0.98 }}>
-            WORLD&rsquo;S MOST FAMOUS BEACH.
+            COME BUILD THINGS WITH AI.
           </div>
           <div
             style={{
@@ -78,7 +78,7 @@ export default function Image() {
               color: "#ffd27a",
             }}
           >
-            BRAND NEW AI CLUB.
+            IN DAYTONA BEACH.
           </div>
           <div
             style={{
@@ -89,7 +89,7 @@ export default function Image() {
               color: FOAM,
             }}
           >
-            {`MONTHLY, IN-PERSON AI MEETUPS IN ${site.city.toUpperCase()}, ${site.region}`}
+            {`A SMALL GROUP OF CURIOUS PEOPLE IN ${site.city.toUpperCase()}, ${site.region}`}
           </div>
         </div>
       </div>

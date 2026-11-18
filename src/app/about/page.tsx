@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import {
   AboutCta,
-  ConductSection,
+  ExpectationsSection,
   WhyAndOrganizer,
 } from "@/components/sections/about-parts";
 import { AudiencesSection } from "@/components/sections/audiences-section";
 import { PageHeader } from "@/components/ui/primitives";
-import { aboutHeader, aboutMeta, audienceCopy } from "@/content/about";
+import { aboutHeader, aboutMeta } from "@/content/about";
 
 export const metadata: Metadata = {
   title: aboutMeta.title,
@@ -23,10 +23,9 @@ export default function AboutPage() {
       />
       <WhyAndOrganizer />
       <AudiencesSection
-        copy={audienceCopy}
         className="border-t border-foam/8 bg-linear-to-b from-ink-950 via-ink-900 to-ink-950"
       />
-      <ConductSection />
+      <ExpectationsSection />
       <AboutCta />
     </>
   );

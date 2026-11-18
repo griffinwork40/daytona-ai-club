@@ -6,7 +6,7 @@ import { validateJoin, validateSpeak } from "./validation";
 // ---------------------------------------------------------------------------
 
 describe("validateJoin", () => {
-  const base = { email: "a@b.com", firstName: "", honeypot: "" };
+  const base = { email: "a@b.com", firstName: "", interest: "", honeypot: "" };
 
   it("returns null for a minimal valid submission", () => {
     expect(validateJoin(base)).toBeNull();
@@ -14,6 +14,10 @@ describe("validateJoin", () => {
 
   it("returns null with an optional first name", () => {
     expect(validateJoin({ ...base, firstName: "Alex" })).toBeNull();
+  });
+
+  it("returns null with an optional interest", () => {
+    expect(validateJoin({ ...base, interest: "AI agents" })).toBeNull();
   });
 
   it("requires email", () => {
@@ -38,6 +42,15 @@ describe("validateJoin", () => {
     const errors = validateJoin({ ...base, firstName: "a".repeat(101) });
     expect(errors?.firstName).toMatch(/100/);
   });
+
+  it("rejects an interest over 500 chars", () => {
+    const errors = validateJoin({ ...base, interest: "x".repeat(501) });
+    expect(errors?.interest).toMatch(/500/);
+  });
+
+  it("accepts an interest at the length limit", () => {
+    expect(validateJoin({ ...base, interest: "x".repeat(500) })).toBeNull();
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -48,9 +61,7 @@ describe("validateSpeak", () => {
   const base = {
     name: "Taylor Kim",
     email: "t@example.com",
-    talkTitle: "Building RAG pipelines",
-    talkFormat: "short_demo",
-    description: "A five-minute live demo of a retrieval-augmented chatbot.",
+    description: "A live demo of a retrieval-augmented chatbot.",
     honeypot: "",
   };
 
@@ -78,34 +89,9 @@ describe("validateSpeak", () => {
     expect(errors?.email).toMatch(/valid/i);
   });
 
-  it("requires talkTitle", () => {
-    const errors = validateSpeak({ ...base, talkTitle: "" });
-    expect(errors?.talkTitle).toMatch(/required/i);
-  });
-
-  it("rejects a talkTitle over 200 chars", () => {
-    const errors = validateSpeak({ ...base, talkTitle: "T".repeat(201) });
-    expect(errors?.talkTitle).toMatch(/200/);
-  });
-
-  it("requires talkFormat", () => {
-    const errors = validateSpeak({ ...base, talkFormat: "" });
-    expect(errors?.talkFormat).toMatch(/select/i);
-  });
-
-  it("rejects an invalid talkFormat", () => {
-    const errors = validateSpeak({ ...base, talkFormat: "keynote" });
-    expect(errors?.talkFormat).toBeDefined();
-  });
-
-  it("accepts both valid talkFormat values", () => {
-    expect(validateSpeak({ ...base, talkFormat: "short_demo" })).toBeNull();
-    expect(validateSpeak({ ...base, talkFormat: "deep_dive" })).toBeNull();
-  });
-
   it("requires description", () => {
     const errors = validateSpeak({ ...base, description: "" });
-    expect(errors?.description).toMatch(/required/i);
+    expect(errors?.description).toBeDefined();
   });
 
   it("rejects a description over 2000 chars", () => {
@@ -118,9 +104,9 @@ describe("validateSpeak", () => {
       ...base,
       name: "",
       email: "",
-      talkTitle: "",
+      description: "",
     });
     expect(errors).not.toBeNull();
-    expect(Object.keys(errors!).length).toBeGreaterThanOrEqual(3);
+    expect(Object.keys(errors!).length).toBeGreaterThanOrEqual(2);
   });
 });

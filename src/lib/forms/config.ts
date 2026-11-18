@@ -23,3 +23,9 @@ export function isSpeakConfigured(): boolean {
   const { apiKey, organizerEmail, fromAddress } = formConfig();
   return Boolean(apiKey && organizerEmail && fromAddress);
 }
+
+/** Notify the organizer when someone signs up. Same requirements as speak. */
+export function isNotifyConfigured(): boolean {
+  const { apiKey, organizerEmail, fromAddress } = formConfig();
+  return Boolean(apiKey && organizerEmail && fromAddress);
+}

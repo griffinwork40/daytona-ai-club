@@ -29,16 +29,16 @@ export function SpeakForm({ enabled = true }: { enabled?: boolean }) {
 
   if (!enabled || state.status === "not_configured") {
     return (
-      <FormNotice title="Proposals are not open yet" live={enabled}>
-        The proposal inbox is still being set up, so nothing can be sent
-        right now. Check back soon.
+      <FormNotice title="Not open yet" live={enabled}>
+        This form is still being set up, so nothing can be sent right now.
+        Check back soon.
       </FormNotice>
     );
   }
 
   if (state.status === "success") {
     return (
-      <FormNotice title="Proposal received" tone="success" live>
+      <FormNotice title="Got it" tone="success" live>
         {state.message}
       </FormNotice>
     );
@@ -125,77 +125,10 @@ export function SpeakForm({ enabled = true }: { enabled?: boolean }) {
           )}
         </div>
 
-        {/* Talk title */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="speak-talkTitle" className="label text-mist">
-            Talk title <span aria-hidden="true">*</span>
-          </label>
-          <input
-            id="speak-talkTitle"
-            name="talkTitle"
-            type="text"
-            required
-            aria-required="true"
-            aria-describedby={errors.talkTitle ? "speak-talkTitle-err" : undefined}
-            aria-invalid={errors.talkTitle ? "true" : undefined}
-            className="field"
-            defaultValue={values.talkTitle ?? ""}
-            placeholder="Building a local AI coding assistant"
-          />
-          {errors.talkTitle && (
-            <p id="speak-talkTitle-err" role="alert" className="label text-flare-500">
-              {errors.talkTitle}
-            </p>
-          )}
-        </div>
-
-        {/* Talk format */}
-        <fieldset
-          aria-describedby={errors.talkFormat ? "speak-talkFormat-err" : undefined}
-        >
-          <legend className="label text-mist mb-2">
-            Format <span aria-hidden="true">*</span>
-          </legend>
-          <div className="flex flex-col gap-2">
-            <label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="radio"
-                name="talkFormat"
-                value="short_demo"
-                defaultChecked={values.talkFormat === "short_demo"}
-                required
-                className="accent-sun-400"
-              />
-              <span className="font-sans text-sm text-foam">
-                Short demo{" "}
-                <span className="text-mist">(~5 min)</span>
-              </span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="radio"
-                name="talkFormat"
-                value="deep_dive"
-                defaultChecked={values.talkFormat === "deep_dive"}
-                className="accent-sun-400"
-              />
-              <span className="font-sans text-sm text-foam">
-                Deep dive{" "}
-                <span className="text-mist">(~15 min)</span>
-              </span>
-            </label>
-          </div>
-          {errors.talkFormat && (
-            <p id="speak-talkFormat-err" role="alert" className="label text-flare-500 mt-1">
-              {errors.talkFormat}
-            </p>
-          )}
-        </fieldset>
-
-        {/* Description */}
+        {/* What do you want to share */}
         <div className="flex flex-col gap-1">
           <label htmlFor="speak-description" className="label text-mist">
-            Description <span aria-hidden="true">*</span>
+            What do you want to share? <span aria-hidden="true">*</span>
           </label>
           <textarea
             id="speak-description"
@@ -207,7 +140,7 @@ export function SpeakForm({ enabled = true }: { enabled?: boolean }) {
             aria-invalid={errors.description ? "true" : undefined}
             className="field resize-y"
             defaultValue={values.description ?? ""}
-            placeholder="What will you show or explain? What should the audience walk away knowing?"
+            placeholder="A tool you built, a workflow that\u2019s been useful, something you\u2019re still figuring out\u2026"
           />
           {errors.description && (
             <p id="speak-description-err" role="alert" className="label text-flare-500">
@@ -235,7 +168,7 @@ export function SpeakForm({ enabled = true }: { enabled?: boolean }) {
           className={buttonClass("primary")}
           aria-busy={isPending}
         >
-          {isPending ? "Sending…" : "Submit proposal"}
+          {isPending ? "Sending\u2026" : "Send it"}
         </button>
       </div>
     </form>
