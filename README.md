@@ -1,6 +1,6 @@
-# 386 AI Club website
+# Daytona Beach AI Club website
 
-Launch site for 386 AI Club, an in-person AI club in Daytona Beach, Florida. Its one job is to get founding members onto the email list and into meetup #001.
+Launch site for Daytona Beach AI Club, an in-person AI club in Daytona Beach, Florida. Its one job is to get founding members onto the email list and into meetup #001.
 
 Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind 4, and Motion. Hosted on Vercel.
 
