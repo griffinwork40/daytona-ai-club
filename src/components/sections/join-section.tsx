@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { JoinForm } from "@/components/forms/join-form";
 import { Container } from "@/components/ui/primitives";
 import { joinCopy } from "@/content/home";
@@ -42,16 +41,6 @@ export function JoinSection() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-mist">
-            {joinCopy.speakPrompt}{" "}
-            <Link
-              href={joinCopy.speakLink.href}
-              className="text-foam underline decoration-sun-400 underline-offset-4 hover:text-sun-200"
-            >
-              {joinCopy.speakLink.label}
-            </Link>
-            .
-          </p>
         </div>
 
         <div className="self-start">

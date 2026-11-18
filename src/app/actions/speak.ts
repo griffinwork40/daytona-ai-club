@@ -14,7 +14,7 @@ export async function speakAction(
   // Honeypot: bots fill the hidden field, humans never reach it
   const honeypot = String(formData.get("website") ?? "");
   if (honeypot) {
-    return { status: "success", message: "Proposal received." };
+    return { status: "success", message: "Got it." };
   }
 
   // Configuration check first — before touching any personal data
@@ -26,16 +26,12 @@ export async function speakAction(
   const fields = {
     name: String(formData.get("name") ?? ""),
     email: String(formData.get("email") ?? ""),
-    talkTitle: String(formData.get("talkTitle") ?? ""),
-    talkFormat: String(formData.get("talkFormat") ?? ""),
     description: String(formData.get("description") ?? ""),
     honeypot,
   };
   const values = {
     name: fields.name,
     email: fields.email,
-    talkTitle: fields.talkTitle,
-    talkFormat: fields.talkFormat,
     description: fields.description,
   };
 
@@ -54,8 +50,6 @@ export async function speakAction(
   const result = await sendSpeakProposal({
     name: fields.name.trim(),
     email: fields.email.trim(),
-    talkTitle: fields.talkTitle.trim(),
-    talkFormat: fields.talkFormat,
     description: fields.description.trim(),
   });
 
@@ -70,6 +64,6 @@ export async function speakAction(
 
   return {
     status: "success",
-    message: "Proposal received. We will be in touch.",
+    message: "Got it. I\u2019ll reply by email.",
   };
 }

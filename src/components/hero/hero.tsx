@@ -1,7 +1,6 @@
 import { Swell } from "@/components/hero/swell";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/primitives";
-import { site } from "@/config/site";
 
 /** Horizontal position of the sun, shared by the disc and its reflection. */
 const SUN_U = 0.72;
@@ -22,27 +21,25 @@ export function Hero() {
             <span className="absolute inset-0 animate-[pulse-dot_2s_ease-out_infinite] rounded-full bg-sun-400" />
             <span className="relative size-2 rounded-full bg-sun-400" />
           </span>
-          Founding members wanted
+          Daytona Beach, FL
         </p>
 
-        {/* 7.4vw keeps "World's most famous beach." on one line from 640px up. */}
         <h1 className="display mt-6 text-[clamp(2.95rem,7.4vw,6.7rem)]">
-          World&rsquo;s most famous beach.
+          Come build things
           <span className="text-sunrise block pb-[0.06em]">
-            Brand new AI club.
+            with people who get it.
           </span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mist sm:text-xl">
-          {site.name} is a monthly, in-person meetup for people around{" "}
-          {site.city} who build with AI, use it at work, or want to see what it
-          can actually do. Live demos. No sales pitches.
+          A small group of people around Daytona Beach who enjoy experimenting
+          with AI, building things, and hanging out. No agenda. Just show up.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/#join">Become a founding member</ButtonLink>
-          <ButtonLink href="/#run-of-show" variant="ghost">
-            See what a night looks like
+          <ButtonLink href="/#join">I&rsquo;m interested</ButtonLink>
+          <ButtonLink href="/#vibe" variant="ghost">
+            What is this?
           </ButtonLink>
         </div>
       </Container>

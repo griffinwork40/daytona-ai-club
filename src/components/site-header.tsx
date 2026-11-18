@@ -3,7 +3,7 @@ import { MobileNav } from "@/components/mobile-nav";
 import { Plate } from "@/components/ui/primitives";
 import { nav, site } from "@/config/site";
 
-/** Club wordmark: the area code on a number plate, then "AI Club". */
+/** Club wordmark: initials on a plate, then "AI Club". */
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
@@ -36,7 +36,7 @@ export function SiteHeader() {
             href="/#join"
             className="display bg-foam px-4 py-2 text-base tracking-wide text-ink-950 transition hover:bg-sun-300"
           >
-            Join the club
+            Come hang out
           </Link>
         </nav>
 

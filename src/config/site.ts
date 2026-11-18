@@ -6,21 +6,20 @@
  * UI instead of showing a placeholder, so nothing fake ships.
  */
 export const site = {
-  name: "386 AI Club",
-  shortName: "386 AI",
-  /** Number shown on the wordmark plate. 386 is the local area code. */
-  plate: "386",
+  name: "Daytona Beach AI Club",
+  shortName: "DBAI",
+  /** Short text shown on the wordmark plate. */
+  plate: "DB",
   city: "Daytona Beach",
   region: "FL",
   county: "Volusia County",
   founded: 2026,
-  tagline: "Daytona Beach's in-person AI club",
+  tagline: "A small group building things with AI in Daytona Beach",
   description:
-    "386 AI Club is a monthly, in-person meetup in Daytona Beach, Florida for people who build with AI, use it at work, or want to see what it can actually do. Live demos, no sales pitches.",
+    "Daytona Beach AI Club is a casual, in-person gathering for people around Daytona Beach who enjoy experimenting with AI, building things, and hanging out. No presentations, no agenda. Just curious people, laptops, and good company.",
   organizer: {
     name: "Griffin Long",
-    /** DRAFT: confirm wording with the organizer before launch. */
-    bio: "Griffin is a Daytona Beach software engineer who builds open source AI agent tools.",
+    bio: "Software engineer in Daytona Beach building open source AI agent tools. Started this because he wanted to find people nearby who are into the same things.",
     url: null as string | null,
   },
   links: {
@@ -36,7 +35,7 @@ export const site = {
 export const nav = [
   { href: "/events", label: "Events" },
   { href: "/about", label: "About" },
-  { href: "/speak", label: "Speak" },
+  { href: "/speak", label: "Share" },
 ] as const;
 
 /**

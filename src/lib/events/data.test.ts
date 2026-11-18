@@ -8,7 +8,7 @@ const base: ClubEvent = { slug: "test", number: 1, title: "A </script> title", s
 describe("authored event data", () => {
   it("seeds exactly one honest undated meetup", () => {
     expect(events).toHaveLength(1);
-    expect(events[0]).toMatchObject({ slug: "founding-night", number: 1, title: "Founding Night" });
+    expect(events[0]).toMatchObject({ slug: "founding-night", number: 1, title: "First Hangout" });
     expect(events[0].start).toBeUndefined();
     expect(events[0].end).toBeUndefined();
     expect(events[0].venue).toBeUndefined();

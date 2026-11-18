@@ -1,23 +1,23 @@
 import type { Card, SectionCopy } from "@/content/types";
 
-/** Who the club is for. Used on the home page and on /about. */
+/** Who shows up. Used on the home page and /about. */
 export const audiencesCopy: SectionCopy = {
-  eyebrow: "Lap 02 · The field",
-  title: "Who it is for",
-  lede: "Three kinds of people, one room. You do not need to code to belong here.",
+  eyebrow: "Who shows up",
+  title: "Curious people",
+  lede: "You don\u2019t need an impressive r\u00e9sum\u00e9 or a finished project. You just need to be interested.",
 };
 
 export const audiences: Card[] = [
   {
-    title: "People who build with AI",
-    body: "Engineers, tinkerers, and founders shipping things with models, agents, and APIs. Bring what you made, show how it works, and trade notes with people solving the same problems.",
+    title: "People who build things",
+    body: "Engineers, indie hackers, founders. You\u2019re shipping things with AI and want to trade notes with people solving similar problems.",
   },
   {
-    title: "People who use it at work",
-    body: "Marketers, analysts, nurses, teachers, lawyers, tradespeople. If AI already shows up in your job, come see how others use it and share what works for you.",
+    title: "People who use AI at work",
+    body: "Marketers, designers, analysts, writers. AI shows up in your day-to-day and you want to see how others are using it.",
   },
   {
-    title: "People who are curious",
-    body: "Students, retirees, and anyone who wants to see what this stuff can really do, live and unscripted. Ask anything. Nobody expects you to know the jargon.",
+    title: "People who are just curious",
+    body: "You\u2019ve heard about all this AI stuff and want to see what it actually looks like up close. Perfect. That\u2019s reason enough.",
   },
 ];

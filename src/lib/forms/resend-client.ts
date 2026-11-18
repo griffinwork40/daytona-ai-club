@@ -32,13 +32,12 @@ import { formConfig } from "./config";
 export interface JoinContactPayload {
   email: string;
   firstName?: string;
+  interest?: string;
 }
 
 export interface SpeakEmailPayload {
   name: string;
   email: string;
-  talkTitle: string;
-  talkFormat: string;
   description: string;
 }
 
@@ -78,19 +77,11 @@ export async function sendSpeakProposal(
     return { ok: false, message: "Resend not configured" };
   }
 
-  const formatLabel =
-    payload.talkFormat === "short_demo"
-      ? "Short demo (~5 min)"
-      : "Deep dive (~15 min)";
-
   const body = [
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
     ``,
-    `Talk title: ${payload.talkTitle}`,
-    `Format: ${formatLabel}`,
-    ``,
-    `Description:`,
+    `What they want to share:`,
     payload.description,
   ].join("\n");
 
@@ -100,8 +91,45 @@ export async function sendSpeakProposal(
     from: fromAddress,
     to: organizerEmail,
     replyTo: payload.email,
-    subject: `Talk proposal: ${payload.talkTitle}`,
+    subject: `New share request from ${payload.name}`,
     text: body,
+  });
+
+  if (error) {
+    return { ok: false, message: error.message };
+  }
+
+  if (!data) {
+    return { ok: false, message: "No data returned from Resend" };
+  }
+
+  return { ok: true };
+}
+
+export async function sendJoinNotification(
+  payload: JoinContactPayload
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  const { apiKey, organizerEmail, fromAddress } = formConfig();
+  if (!apiKey || !organizerEmail || !fromAddress) {
+    return { ok: false, message: "Resend not configured" };
+  }
+
+  const lines = [
+    `Email: ${payload.email}`,
+  ];
+  if (payload.firstName) lines.push(`Name: ${payload.firstName}`);
+  if (payload.interest) {
+    lines.push(``, `Interested in:`, payload.interest);
+  }
+
+  const resend = new Resend(apiKey);
+
+  const { data, error } = await resend.emails.send({
+    from: fromAddress,
+    to: organizerEmail,
+    replyTo: payload.email,
+    subject: `New signup: ${payload.email}`,
+    text: lines.join("\n"),
   });
 
   if (error) {

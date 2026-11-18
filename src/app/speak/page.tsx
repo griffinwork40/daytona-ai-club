@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import {
-  FormatsSection,
-  GoodDemoSection,
-  ProposalSection,
-  WhoShouldPropose,
+  ShareFormSection,
+  WhatWorksSection,
+  WhoShouldShare,
 } from "@/components/sections/speak-parts";
 import { ButtonLink } from "@/components/ui/button";
 import { Container, PageHeader } from "@/components/ui/primitives";
@@ -27,10 +26,9 @@ export default function SpeakPage() {
           <ButtonLink href="#propose">{speakHeader.cta}</ButtonLink>
         </Container>
       </div>
-      <WhoShouldPropose />
-      <FormatsSection />
-      <GoodDemoSection />
-      <ProposalSection />
+      <WhoShouldShare />
+      <WhatWorksSection />
+      <ShareFormSection />
     </>
   );
 }

@@ -1,19 +1,16 @@
 import { CardGrid } from "@/components/sections/card-grid";
 import { SpeakForm } from "@/components/forms/speak-form";
-import { Container, Plate, Section } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/reveal";
+import { Container, Section } from "@/components/ui/primitives";
 import { isSpeakConfigured } from "@/lib/forms/config";
 import {
   formCopy,
-  formats,
-  formatsCopy,
   goodCopy,
   goodTraits,
   whoCopy,
 } from "@/content/speak";
 
-/** Who should propose, as a short checklist. */
-export function WhoShouldPropose() {
+/** Who should share, as a short checklist. */
+export function WhoShouldShare() {
   return (
     <Section eyebrow={whoCopy.eyebrow} title={whoCopy.title}>
       <ul className="grid gap-px bg-foam/8 sm:grid-cols-2">
@@ -31,50 +28,8 @@ export function WhoShouldPropose() {
   );
 }
 
-/** The two formats, each with its time on a number plate. */
-export function FormatsSection() {
-  return (
-    <Section
-      eyebrow={formatsCopy.eyebrow}
-      title={formatsCopy.title}
-      className="border-t border-foam/8 bg-linear-to-b from-ink-950 via-ink-900 to-ink-950"
-    >
-      <Reveal>
-        <div className="grid gap-5 md:grid-cols-2">
-          {formats.map((f, i) => (
-            <article key={f.name} className="panel relative p-6 sm:p-8">
-              <div
-                aria-hidden
-                className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-sun-300 via-flare-500 to-dusk-500"
-              />
-              <div className="flex items-center justify-between gap-4">
-                <Plate tone={i === 0 ? "line" : "sun"} className="text-3xl">
-                  ~{f.minutes} min
-                </Plate>
-              </div>
-              <h3 className="display mt-6 text-4xl">{f.name}</h3>
-              <p className="mt-4 leading-relaxed text-mist">{f.body}</p>
-              <p className="label mt-6 text-sun-300">For example</p>
-              <ul className="mt-3 space-y-2">
-                {f.examples.map((ex) => (
-                  <li key={ex} className="text-foam">
-                    <span aria-hidden className="text-sun-400">
-                      /{" "}
-                    </span>
-                    {ex}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </Reveal>
-    </Section>
-  );
-}
-
-/** What makes a good demo. */
-export function GoodDemoSection() {
+/** What makes a good share. */
+export function WhatWorksSection() {
   return (
     <Section eyebrow={goodCopy.eyebrow} title={goodCopy.title}>
       <CardGrid items={goodTraits} columns={2} />
@@ -82,8 +37,8 @@ export function GoodDemoSection() {
   );
 }
 
-/** Proposal form block. Shows a plain note while the form renders nothing. */
-export function ProposalSection() {
+/** Share form block. Shows a plain note while the form renders nothing. */
+export function ShareFormSection() {
   return (
     <section
       id="propose"

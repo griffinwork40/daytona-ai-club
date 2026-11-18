@@ -1,100 +1,38 @@
-import type { Card, RunStep, SectionCopy } from "@/content/types";
+import type { SectionCopy } from "@/content/types";
 
 /**
  * Home page copy, except the FAQ (see faq.ts) and audiences (audiences.ts).
- * Lines marked DRAFT are assumptions about club policy. Confirm or edit them.
  */
 
-export const nextCopy = {
-  eyebrow: "Lap 01 · On the grid",
-  title: "Next up",
-  lede: "Every meetup gets a number, like a car on the grid. The first one is #001, Founding Night.",
-  plate: "#001",
-  note: "New dates and venues go to the email list first.",
+export const vibeCopy: SectionCopy & { paragraphs: string[] } = {
+  eyebrow: "What this is",
+  title: "Not a meetup. A hangout.",
+  paragraphs: [
+    "Picture a few people in a casual space. Laptops open, music playing. Someone\u2019s pair-programming with Claude Code. Someone else is trying to get a local LLM running. Someone asks \u201chey, check this out\u201d and everyone leans over.",
+    "That\u2019s pretty much it.",
+    "Sometimes someone shows what they built. Sometimes we just hack on things together. The only real structure is showing up.",
+  ],
 };
 
-export const runOfShowCopy: SectionCopy & { caveat: string } = {
-  eyebrow: "Lap 03 · Run of show",
-  title: "What a night looks like",
-  // DRAFT: total length of about two and a half hours.
-  lede: "Roughly two and a half hours, built around live demos and time to build together.",
-  caveat:
-    "This is the plan, not a promise. The format may shift until meetup #001 is booked, and again after we learn what works in the room.",
+export const founderCopy = {
+  eyebrow: "Who\u2019s behind this",
+  title: "Hey, I\u2019m Griffin",
+  paragraphs: [
+    "I\u2019m a software engineer in Daytona Beach. I build open source AI agent tools and spend most of my time messing around with LLMs, autonomous agents, and whatever else seems interesting.",
+    "I started this because I wanted to find people nearby who are into the same things. Not a networking event or a lecture series. Just people to build things with and hang out.",
+    "If that sounds like your kind of thing, come through.",
+  ],
 };
-
-/** Order of the evening. Durations only, since no start time is set. */
-export const runOfShow: RunStep[] = [
-  {
-    title: "Doors and hellos",
-    // DRAFT: 30 minute arrival window.
-    minutes: 30,
-    body: "Find a seat, meet the people next to you, and say what you are working on or curious about.",
-  },
-  {
-    title: "Short demos",
-    // DRAFT: four or so demos per night.
-    minutes: 30,
-    body: "A handful of live demos, about five minutes each. Real tools on a real screen, with a quick question or two after each.",
-  },
-  {
-    title: "Deep dive",
-    // DRAFT: 15 minute talk plus 10 minutes of questions.
-    minutes: 25,
-    body: "One longer session, about fifteen minutes, that goes further into a single project or technique. Then open questions.",
-  },
-  {
-    title: "Open build",
-    // DRAFT: open build closes the night.
-    minutes: 60,
-    body: "Laptops open. Get help with a stuck project, pair with someone new, or watch over a shoulder and ask questions.",
-  },
-];
-
-export const houseRulesCopy: SectionCopy = {
-  eyebrow: "Lap 04 · House rules",
-  title: "House rules",
-  lede: "A few norms that keep the night worth showing up for.",
-};
-
-export const houseRules: Card[] = [
-  {
-    title: "Demos over slides",
-    body: "Show the thing working. A live screen beats a deck every time, even when it breaks.",
-  },
-  {
-    title: "No sales pitches",
-    body: "Share what you built and what you learned. Selling a product or service from the front of the room is off limits.",
-  },
-  {
-    title: "Beginners welcome",
-    body: "Every question is fair game. Explain things the way you wish someone had explained them to you.",
-  },
-  {
-    // DRAFT: credit norm.
-    title: "Credit your sources",
-    body: "Name the tools, papers, and people your work builds on.",
-  },
-  {
-    // DRAFT: photo and recording consent norm.
-    title: "Ask before you post",
-    body: "Check with people before you share photos of them or their screens.",
-  },
-];
 
 export const joinCopy = {
-  eyebrow: "Lap 05 · Join",
-  title: "Become a founding member",
-  lede: "The club starts with the people on this list. Add your email and you will hear first when Founding Night has a date and a venue.",
+  eyebrow: "Get involved",
+  title: "Come hang out",
+  lede: "Drop your email and I\u2019ll reach out when we\u2019re getting together next. That\u2019s it.",
   points: [
-    "One list, no account to create.",
-    // DRAFT: email frequency and content policy.
-    "Emails only about meetups: dates, venues, and calls for demos.",
-    // DRAFT: unsubscribe policy (depends on the forms workstream).
-    "Unsubscribe any time.",
+    "No account to create. Just an email.",
+    "I\u2019ll only email about getting together.",
+    "Unsubscribe whenever.",
   ],
-  /** Shown only if the signup form renders nothing. */
   pendingLabel: "Signups opening soon",
-  pending: "The signup form is not live yet. Check back shortly.",
-  speakPrompt: "If you have something to show,",
-  speakLink: { href: "/speak", label: "propose a demo" },
+  pending: "The signup form is still being set up. Check back shortly.",
 };

@@ -1,10 +1,9 @@
 import { Hero } from "@/components/hero/hero";
 import { AudiencesSection } from "@/components/sections/audiences-section";
 import { FaqSection } from "@/components/sections/faq-section";
-import { HouseRulesSection } from "@/components/sections/house-rules-section";
+import { FounderSection } from "@/components/sections/founder-section";
 import { JoinSection } from "@/components/sections/join-section";
-import { NextMeetupSection } from "@/components/sections/next-meetup-section";
-import { RunOfShowSection } from "@/components/sections/run-of-show-section";
+import { VibeSection } from "@/components/sections/vibe-section";
 import { serializeJsonLd } from "@/lib/events/structured-data";
 import { organizationStructuredData } from "@/lib/structured-data";
 
@@ -18,10 +17,9 @@ export default function HomePage() {
         }}
       />
       <Hero />
-      <NextMeetupSection />
+      <VibeSection />
       <AudiencesSection />
-      <RunOfShowSection />
-      <HouseRulesSection />
+      <FounderSection />
       <JoinSection />
       <FaqSection />
     </>

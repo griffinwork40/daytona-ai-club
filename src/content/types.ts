@@ -16,24 +16,9 @@ export type Link = {
   label: string;
 };
 
-export type RunStep = {
-  title: string;
-  body: string;
-  /** Rough length in minutes. Shown as "~20 min". */
-  minutes: number;
-};
-
 export type FaqItem = {
   question: string;
   /** One paragraph per entry. */
   answer: string[];
   link?: Link;
-};
-
-export type Format = {
-  name: string;
-  /** Rough length in minutes. */
-  minutes: number;
-  body: string;
-  examples: string[];
 };

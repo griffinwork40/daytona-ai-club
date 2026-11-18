@@ -43,7 +43,7 @@ export function JoinForm({ source, enabled = true }: Props) {
 
   if (state.status === "success") {
     return (
-      <FormNotice title="You are on the list" tone="success" live>
+      <FormNotice title="You're in" tone="success" live>
         {state.message}
       </FormNotice>
     );
@@ -134,6 +134,30 @@ export function JoinForm({ source, enabled = true }: Props) {
           )}
         </div>
 
+        {/* Interest (optional) */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="join-interest" className="label text-mist">
+            What are you interested in building?{" "}
+            <span className="text-mist/60">(optional)</span>
+          </label>
+          <textarea
+            id="join-interest"
+            name="interest"
+            rows={3}
+            maxLength={500}
+            aria-describedby={errors.interest ? "join-interest-err" : undefined}
+            aria-invalid={errors.interest ? "true" : undefined}
+            className="field resize-y"
+            defaultValue={values.interest ?? ""}
+            placeholder="AI agents, local LLMs, creative tools, just curious..."
+          />
+          {errors.interest && (
+            <p id="join-interest-err" role="alert" className="label text-flare-500">
+              {errors.interest}
+            </p>
+          )}
+        </div>
+
         {/* General error */}
         {state.status === "error" && (
           <p role="alert" className="label text-flare-500">
@@ -153,7 +177,7 @@ export function JoinForm({ source, enabled = true }: Props) {
           className={buttonClass("primary")}
           aria-busy={isPending}
         >
-          {isPending ? "Joining…" : "Join the club"}
+          {isPending ? "Sending\u2026" : "I\u2019m in"}
         </button>
       </div>
     </form>

@@ -1,13 +1,11 @@
 import { CardGrid } from "@/components/sections/card-grid";
 import { ButtonLink } from "@/components/ui/button";
-import { Container, Plate, Section } from "@/components/ui/primitives";
+import { Container, Section } from "@/components/ui/primitives";
 import { site } from "@/config/site";
 import {
   aboutCta,
-  conduct,
-  conductCopy,
-  conductReport,
-  organizerCopy,
+  expectCopy,
+  expectations,
   whyCopy,
 } from "@/content/about";
 
@@ -28,19 +26,12 @@ export function WhyAndOrganizer() {
         </div>
 
         <div>
-          <p className="label text-sun-300">{organizerCopy.eyebrow}</p>
-          <h2 className="display mt-3 text-5xl sm:text-6xl">
-            {organizerCopy.title}
-          </h2>
-          <div className="panel relative mt-8 p-6 sm:p-8">
+          <div className="panel relative mt-0 p-6 sm:p-8">
             <div
               aria-hidden
               className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-sun-300 via-flare-500 to-dusk-500"
             />
-            <Plate tone="line" className="text-lg">
-              Founder
-            </Plate>
-            <p className="display mt-5 text-4xl">{organizer.name}</p>
+            <p className="display text-4xl">{organizer.name}</p>
             <p className="mt-4 leading-relaxed text-mist">{organizer.bio}</p>
             {organizer.url ? (
               <a
@@ -58,19 +49,16 @@ export function WhyAndOrganizer() {
   );
 }
 
-/** Code of conduct with the reporting line. */
-export function ConductSection() {
+/** What to expect at a gathering. */
+export function ExpectationsSection() {
   return (
     <Section
-      eyebrow={conductCopy.eyebrow}
-      title={conductCopy.title}
-      lede={conductCopy.lede}
+      eyebrow={expectCopy.eyebrow}
+      title={expectCopy.title}
+      lede={expectCopy.lede}
       className="border-t border-foam/8"
     >
-      <CardGrid items={conduct} columns={3} />
-      <p className="mt-8 max-w-2xl border-l-2 border-sun-400 pl-5 text-mist">
-        {conductReport.text}
-      </p>
+      <CardGrid items={expectations} columns={2} />
     </Section>
   );
 }
@@ -81,8 +69,7 @@ export function AboutCta() {
     <section className="border-t border-foam/8 bg-linear-to-b from-ink-950 to-dusk-900/60 py-20 sm:py-24">
       <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <Plate className="text-3xl">#001</Plate>
-          <h2 className="display mt-5 text-5xl sm:text-6xl">
+          <h2 className="display text-5xl sm:text-6xl">
             {aboutCta.title}
           </h2>
           <p className="mt-4 max-w-xl text-lg text-mist">{aboutCta.body}</p>

@@ -4,8 +4,8 @@ import { headers } from "next/headers";
 import type { FormState } from "@/lib/forms/types";
 import { validateJoin } from "@/lib/forms/validation";
 import { joinLimiter } from "@/lib/forms/rate-limiter";
-import { isJoinConfigured } from "@/lib/forms/config";
-import { addContactToList } from "@/lib/forms/resend-client";
+import { isJoinConfigured, isNotifyConfigured } from "@/lib/forms/config";
+import { addContactToList, sendJoinNotification } from "@/lib/forms/resend-client";
 
 export async function joinAction(
   _prev: FormState,
@@ -27,9 +27,14 @@ export async function joinAction(
   const fields = {
     email: String(formData.get("email") ?? ""),
     firstName: String(formData.get("firstName") ?? ""),
+    interest: String(formData.get("interest") ?? ""),
     honeypot,
   };
-  const values = { email: fields.email, firstName: fields.firstName };
+  const values = {
+    email: fields.email,
+    firstName: fields.firstName,
+    interest: fields.interest,
+  };
 
   // Rate limit by IP
   const hdrs = await headers();
@@ -46,6 +51,7 @@ export async function joinAction(
   const result = await addContactToList({
     email: fields.email.trim(),
     firstName: fields.firstName.trim() || undefined,
+    interest: fields.interest.trim() || undefined,
   });
 
   if (!result.ok) {
@@ -57,8 +63,19 @@ export async function joinAction(
     };
   }
 
+  // Fire-and-forget organizer notification when interest is filled in
+  if (fields.interest.trim() && isNotifyConfigured()) {
+    sendJoinNotification({
+      email: fields.email.trim(),
+      firstName: fields.firstName.trim() || undefined,
+      interest: fields.interest.trim(),
+    }).catch((err) => {
+      console.error("[join] Failed to send organizer notification:", err);
+    });
+  }
+
   return {
     status: "success",
-    message: "You will get an email when Founding Night has a date and a venue.",
+    message: "I\u2019ll reach out when we\u2019re getting together next.",
   };
 }
